@@ -6,7 +6,7 @@ import torch
 
 app = Flask(__name__)
 cors = CORS(app)
-learner = load_learner("final-classifier-2.pkl")
+learner = load_learner("final-classifier-2.pkl", cpu=False)
 
 @app.route('/')
 def hello_world():
