@@ -1,0 +1,84 @@
+[Wed Nov 18 15:39:35.172570 2020] [wsgi:error] [pid 23847:tid 547891806624] [remote 127.0.0.1:60566] mod_wsgi (pid=23847, process='msc-backend', application='&{GLOBAL}'): Failed to parse WSGI script file '/var/www/msc-backend/app.wsgi'.
+[Wed Nov 18 15:39:35.172706 2020] [wsgi:error] [pid 23847:tid 547891806624] [remote 127.0.0.1:60566] mod_wsgi (pid=23847): Exception occurred processing WSGI script '/var/www/msc-backend/app.wsgi'.
+[Wed Nov 18 15:39:35.172906 2020] [wsgi:error] [pid 23847:tid 547891806624] [remote 127.0.0.1:60566]   File "/var/www/msc-backend/app.wsgi", line 5
+[Wed Nov 18 15:39:35.172963 2020] [wsgi:error] [pid 23847:tid 547891806624] [remote 127.0.0.1:60566]     from msc-backend import app as application
+[Wed Nov 18 15:39:35.173042 2020] [wsgi:error] [pid 23847:tid 547891806624] [remote 127.0.0.1:60566]             ^
+[Wed Nov 18 15:39:35.173082 2020] [wsgi:error] [pid 23847:tid 547891806624] [remote 127.0.0.1:60566] SyntaxError: invalid syntax
+[Wed Nov 18 15:57:29.363113 2020] [wsgi:error] [pid 25507:tid 548093174176] [remote 127.0.0.1:60694] mod_wsgi (pid=25507): Target WSGI script '/var/www/mscbackend/app.wsgi' cannot be loaded as Python module.
+[Wed Nov 18 15:57:29.363246 2020] [wsgi:error] [pid 25507:tid 548093174176] [remote 127.0.0.1:60694] mod_wsgi (pid=25507): Exception occurred processing WSGI script '/var/www/mscbackend/app.wsgi'.
+[Wed Nov 18 15:57:29.363845 2020] [wsgi:error] [pid 25507:tid 548093174176] [remote 127.0.0.1:60694] Traceback (most recent call last):
+[Wed Nov 18 15:57:29.363932 2020] [wsgi:error] [pid 25507:tid 548093174176] [remote 127.0.0.1:60694]   File "/var/www/mscbackend/app.wsgi", line 5, in <module>
+[Wed Nov 18 15:57:29.363951 2020] [wsgi:error] [pid 25507:tid 548093174176] [remote 127.0.0.1:60694]     from mscbackend import app as application
+[Wed Nov 18 15:57:29.364009 2020] [wsgi:error] [pid 25507:tid 548093174176] [remote 127.0.0.1:60694] ModuleNotFoundError: No module named 'mscbackend'
+[Wed Nov 18 15:57:38.605628 2020] [wsgi:error] [pid 25507:tid 548084781472] [remote 127.0.0.1:60696] mod_wsgi (pid=25507): Target WSGI script '/var/www/mscbackend/app.wsgi' cannot be loaded as Python module.
+[Wed Nov 18 15:57:38.605769 2020] [wsgi:error] [pid 25507:tid 548084781472] [remote 127.0.0.1:60696] mod_wsgi (pid=25507): Exception occurred processing WSGI script '/var/www/mscbackend/app.wsgi'.
+[Wed Nov 18 15:57:38.606020 2020] [wsgi:error] [pid 25507:tid 548084781472] [remote 127.0.0.1:60696] Traceback (most recent call last):
+[Wed Nov 18 15:57:38.606123 2020] [wsgi:error] [pid 25507:tid 548084781472] [remote 127.0.0.1:60696]   File "/var/www/mscbackend/app.wsgi", line 5, in <module>
+[Wed Nov 18 15:57:38.606149 2020] [wsgi:error] [pid 25507:tid 548084781472] [remote 127.0.0.1:60696]     from mscbackend import app as application
+[Wed Nov 18 15:57:38.606210 2020] [wsgi:error] [pid 25507:tid 548084781472] [remote 127.0.0.1:60696] ModuleNotFoundError: No module named 'mscbackend'
+[Wed Nov 18 15:59:59.645478 2020] [wsgi:error] [pid 25887:tid 547806175648] [remote 127.0.0.1:60700] mod_wsgi (pid=25887): Target WSGI script '/var/www/mscbackend/app.wsgi' cannot be loaded as Python module.
+[Wed Nov 18 15:59:59.645606 2020] [wsgi:error] [pid 25887:tid 547806175648] [remote 127.0.0.1:60700] mod_wsgi (pid=25887): Exception occurred processing WSGI script '/var/www/mscbackend/app.wsgi'.
+[Wed Nov 18 15:59:59.646246 2020] [wsgi:error] [pid 25887:tid 547806175648] [remote 127.0.0.1:60700] Traceback (most recent call last):
+[Wed Nov 18 15:59:59.646345 2020] [wsgi:error] [pid 25887:tid 547806175648] [remote 127.0.0.1:60700]   File "/var/www/mscbackend/app.wsgi", line 5, in <module>
+[Wed Nov 18 15:59:59.646368 2020] [wsgi:error] [pid 25887:tid 547806175648] [remote 127.0.0.1:60700]     from .app import app as application
+[Wed Nov 18 15:59:59.646433 2020] [wsgi:error] [pid 25887:tid 547806175648] [remote 127.0.0.1:60700] ImportError: attempted relative import with no known parent package
+[Wed Nov 18 16:06:08.373200 2020] [wsgi:error] [pid 26142:tid 547666993568] [client 127.0.0.1:60704] Timeout when reading response headers from daemon process 'mscbackend': /var/www/mscbackend/app.wsgi
+[Wed Nov 18 16:06:19.618106 2020] [wsgi:error] [pid 26143:tid 547666993568] [client 127.0.0.1:60712] Truncated or oversized response headers received from daemon process 'mscbackend': /var/www/mscbackend/app.wsgi
+[Wed Nov 18 16:22:09.384128 2020] [wsgi:error] [pid 26143:tid 547658600864] [client 127.0.0.1:60738] Timeout when reading response headers from daemon process 'mscbackend': /var/www/mscbackend/app.wsgi
+[Wed Nov 18 16:26:56.118039 2020] [wsgi:error] [pid 26754:tid 548399669664] [remote 127.0.0.1:60824] mod_wsgi (pid=26754): Target WSGI script '/var/www/mscbackend/app.wsgi' cannot be loaded as Python module.
+[Wed Nov 18 16:26:56.118220 2020] [wsgi:error] [pid 26754:tid 548399669664] [remote 127.0.0.1:60824] mod_wsgi (pid=26754): Exception occurred processing WSGI script '/var/www/mscbackend/app.wsgi'.
+[Wed Nov 18 16:26:56.125004 2020] [wsgi:error] [pid 26754:tid 548399669664] [remote 127.0.0.1:60824] Traceback (most recent call last):
+[Wed Nov 18 16:26:56.125140 2020] [wsgi:error] [pid 26754:tid 548399669664] [remote 127.0.0.1:60824]   File "/var/www/mscbackend/app.wsgi", line 5, in <module>
+[Wed Nov 18 16:26:56.125157 2020] [wsgi:error] [pid 26754:tid 548399669664] [remote 127.0.0.1:60824]     from app import app as application
+[Wed Nov 18 16:26:56.125183 2020] [wsgi:error] [pid 26754:tid 548399669664] [remote 127.0.0.1:60824]   File "/var/www/mscbackend/app.py", line 9, in <module>
+[Wed Nov 18 16:26:56.125196 2020] [wsgi:error] [pid 26754:tid 548399669664] [remote 127.0.0.1:60824]     learner = load_learner("final-classifier-2.pkl", cpu=False)
+[Wed Nov 18 16:26:56.125221 2020] [wsgi:error] [pid 26754:tid 548399669664] [remote 127.0.0.1:60824]   File "/usr/local/lib/python3.6/dist-packages/fastai-2.0.18-py3.6.egg/fastai/learner.py", line 549, in load_learner
+[Wed Nov 18 16:26:56.125235 2020] [wsgi:error] [pid 26754:tid 548399669664] [remote 127.0.0.1:60824]     res = torch.load(fname, map_location='cpu' if cpu else None)
+[Wed Nov 18 16:26:56.125259 2020] [wsgi:error] [pid 26754:tid 548399669664] [remote 127.0.0.1:60824]   File "/home/jettoruitas/.local/lib/python3.6/site-packages/torch/serialization.py", line 571, in load
+[Wed Nov 18 16:26:56.125273 2020] [wsgi:error] [pid 26754:tid 548399669664] [remote 127.0.0.1:60824]     with _open_file_like(f, 'rb') as opened_file:
+[Wed Nov 18 16:26:56.125297 2020] [wsgi:error] [pid 26754:tid 548399669664] [remote 127.0.0.1:60824]   File "/home/jettoruitas/.local/lib/python3.6/site-packages/torch/serialization.py", line 229, in _open_file_like
+[Wed Nov 18 16:26:56.125311 2020] [wsgi:error] [pid 26754:tid 548399669664] [remote 127.0.0.1:60824]     return _open_file(name_or_buffer, mode)
+[Wed Nov 18 16:26:56.125335 2020] [wsgi:error] [pid 26754:tid 548399669664] [remote 127.0.0.1:60824]   File "/home/jettoruitas/.local/lib/python3.6/site-packages/torch/serialization.py", line 210, in __init__
+[Wed Nov 18 16:26:56.125349 2020] [wsgi:error] [pid 26754:tid 548399669664] [remote 127.0.0.1:60824]     super(_open_file, self).__init__(open(name, mode))
+[Wed Nov 18 16:26:56.125402 2020] [wsgi:error] [pid 26754:tid 548399669664] [remote 127.0.0.1:60824] FileNotFoundError: [Errno 2] No such file or directory: 'final-classifier-2.pkl'
+[Wed Nov 18 16:50:53.766828 2020] [wsgi:error] [pid 27692:tid 548301132192] [remote 192.168.1.170:60822] mod_wsgi (pid=27692): Target WSGI script '/var/www/mscbackend/app.wsgi' cannot be loaded as Python module.
+[Wed Nov 18 16:50:53.810168 2020] [wsgi:error] [pid 27692:tid 548301132192] [remote 192.168.1.170:60822] mod_wsgi (pid=27692): Exception occurred processing WSGI script '/var/www/mscbackend/app.wsgi'.
+[Wed Nov 18 16:50:53.833103 2020] [wsgi:error] [pid 27692:tid 548301132192] [remote 192.168.1.170:60822] Traceback (most recent call last):
+[Wed Nov 18 16:50:53.833515 2020] [wsgi:error] [pid 27692:tid 548301132192] [remote 192.168.1.170:60822]   File "/var/www/mscbackend/app.wsgi", line 5, in <module>
+[Wed Nov 18 16:50:53.833550 2020] [wsgi:error] [pid 27692:tid 548301132192] [remote 192.168.1.170:60822]     from app import app as application
+[Wed Nov 18 16:50:53.833642 2020] [wsgi:error] [pid 27692:tid 548301132192] [remote 192.168.1.170:60822]   File "/var/www/mscbackend/app.py", line 34, in <module>
+[Wed Nov 18 16:50:53.833673 2020] [wsgi:error] [pid 27692:tid 548301132192] [remote 192.168.1.170:60822]     @app.route('/')
+[Wed Nov 18 16:50:53.833887 2020] [wsgi:error] [pid 27692:tid 548301132192] [remote 192.168.1.170:60822]   File "/home/jettoruitas/.local/lib/python3.6/site-packages/flask/app.py", line 1315, in decorator
+[Wed Nov 18 16:50:53.833922 2020] [wsgi:error] [pid 27692:tid 548301132192] [remote 192.168.1.170:60822]     self.add_url_rule(rule, endpoint, f, **options)
+[Wed Nov 18 16:50:53.833979 2020] [wsgi:error] [pid 27692:tid 548301132192] [remote 192.168.1.170:60822]   File "/home/jettoruitas/.local/lib/python3.6/site-packages/flask/app.py", line 98, in wrapper_func
+[Wed Nov 18 16:50:53.834013 2020] [wsgi:error] [pid 27692:tid 548301132192] [remote 192.168.1.170:60822]     return f(self, *args, **kwargs)
+[Wed Nov 18 16:50:53.834068 2020] [wsgi:error] [pid 27692:tid 548301132192] [remote 192.168.1.170:60822]   File "/home/jettoruitas/.local/lib/python3.6/site-packages/flask/app.py", line 1284, in add_url_rule
+[Wed Nov 18 16:50:53.834100 2020] [wsgi:error] [pid 27692:tid 548301132192] [remote 192.168.1.170:60822]     "existing endpoint function: %s" % endpoint
+[Wed Nov 18 16:50:53.834209 2020] [wsgi:error] [pid 27692:tid 548301132192] [remote 192.168.1.170:60822] AssertionError: View function mapping is overwriting an existing endpoint function: hello_world
+[Wed Nov 18 17:09:34.946303 2020] [wsgi:error] [pid 28913:tid 548038287776] [remote 192.168.1.170:61851] \xe2\x96\x88\r
+[Wed Nov 18 17:10:20.016928 2020] [wsgi:error] [pid 28913:tid 548038287776] [remote 192.168.1.170:61851] \xe2\x96\x88\r
+[Wed Nov 18 17:10:21.396013 2020] [wsgi:error] [pid 28913:tid 548038287776] [remote 192.168.1.170:61851] \xe2\x96\x88\r
+[Wed Nov 18 17:10:21.794377 2020] [wsgi:error] [pid 28913:tid 548038287776] [remote 192.168.1.170:61851] \xe2\x96\x88\r
+[Wed Nov 18 17:10:22.026944 2020] [wsgi:error] [pid 28913:tid 548038287776] [remote 192.168.1.170:61851] \xe2\x96\x88\r
+[Wed Nov 18 17:10:22.308731 2020] [wsgi:error] [pid 28913:tid 548038287776] [remote 192.168.1.170:61851] \xe2\x96\x88\r
+[Wed Nov 18 17:10:22.487839 2020] [wsgi:error] [pid 28913:tid 548038287776] [remote 192.168.1.170:61851] \xe2\x96\x88\r
+[Wed Nov 18 17:10:22.671928 2020] [wsgi:error] [pid 28913:tid 548038287776] [remote 192.168.1.170:61851] \xe2\x96\x88\r
+[Wed Nov 18 17:10:22.840728 2020] [wsgi:error] [pid 28913:tid 548038287776] [remote 192.168.1.170:61851] \xe2\x96\x88\r
+[Wed Nov 18 17:10:23.011471 2020] [wsgi:error] [pid 28913:tid 548038287776] [remote 192.168.1.170:61851] \xe2\x96\x88\r
+[Wed Nov 18 17:10:23.171132 2020] [wsgi:error] [pid 28913:tid 548038287776] [remote 192.168.1.170:61851] \xe2\x96\x88\r
+[Wed Nov 18 17:10:23.348451 2020] [wsgi:error] [pid 28913:tid 548038287776] [remote 192.168.1.170:61851] \xe2\x96\x88\r
+[Wed Nov 18 17:10:23.520770 2020] [wsgi:error] [pid 28913:tid 548038287776] [remote 192.168.1.170:61851] \xe2\x96\x88\r
+[Wed Nov 18 17:10:23.693154 2020] [wsgi:error] [pid 28913:tid 548038287776] [remote 192.168.1.170:61851] \xe2\x96\x88\r
+[Wed Nov 18 17:10:23.881129 2020] [wsgi:error] [pid 28913:tid 548038287776] [remote 192.168.1.170:61851] \xe2\x96\x88\r
+[Wed Nov 18 17:10:24.091753 2020] [wsgi:error] [pid 28913:tid 548038287776] [remote 192.168.1.170:61851] \xe2\x96\x88\r
+[Wed Nov 18 17:10:24.331133 2020] [wsgi:error] [pid 28913:tid 548038287776] [remote 192.168.1.170:61851] \xe2\x96\x88\r
+[Wed Nov 18 17:10:24.500683 2020] [wsgi:error] [pid 28913:tid 548038287776] [remote 192.168.1.170:61851] \xe2\x96\x88\r
+[Wed Nov 18 17:10:24.662769 2020] [wsgi:error] [pid 28913:tid 548038287776] [remote 192.168.1.170:61851] \xe2\x96\x88\r
+[Wed Nov 18 17:10:24.856482 2020] [wsgi:error] [pid 28913:tid 548038287776] [remote 192.168.1.170:61851] \xe2\x96\x88\r
+[Wed Nov 18 17:10:25.028881 2020] [wsgi:error] [pid 28913:tid 548038287776] [remote 192.168.1.170:61851] \xe2\x96\x88\r
+[Wed Nov 18 17:10:25.189138 2020] [wsgi:error] [pid 28913:tid 548038287776] [remote 192.168.1.170:61851] \xe2\x96\x88\r
+[Wed Nov 18 17:10:25.412336 2020] [wsgi:error] [pid 28913:tid 548038287776] [remote 192.168.1.170:61851] \xe2\x96\x88\r
+[Wed Nov 18 17:10:25.568261 2020] [wsgi:error] [pid 28913:tid 548038287776] [remote 192.168.1.170:61851] \xe2\x96\x88\r
+[Wed Nov 18 17:10:25.747854 2020] [wsgi:error] [pid 28913:tid 548038287776] [remote 192.168.1.170:61851] \xe2\x96\x88\r
+[Wed Nov 18 17:10:25.918657 2020] [wsgi:error] [pid 28913:tid 548038287776] [remote 192.168.1.170:61851] \xe2\x96\x88\r
+[Wed Nov 18 17:10:26.128359 2020] [wsgi:error] [pid 28913:tid 548038287776] [remote 192.168.1.170:61851] \xe2\x96\x88\r
