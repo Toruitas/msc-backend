@@ -101,12 +101,23 @@ Finally, this would have to utilize unsupervised methods as much as possible to 
 
 The links to individual research papers, articles, documentaries, interviews, and books which were a part of this process are at the end of this README.
 
+I chose a single paper which to model my efforts after: [Fake News Early Detection: A Theory-driven Model](https://dl.acm.org/doi/10.1145/3377478). Though this paper was theory-driven, and didn't disclose code, it covered a wide variety of approaches leading to a good result.
+
 
 ### Modeling stage
 
-Bias modeling 
-Unsupervised
-Supervised
+My first efforts at training a machine learning model were focused on classifying bias. Using a couple datasets of news articles from Kaggle [here](https://www.kaggle.com/snapcrack/all-the-news) and [here](https://components.one/datasets/all-the-news-2-news-articles-dataset/), I customized the dataset by including publisher bias scores from https://mediabiasfactcheck.com/. Then I trained the model on a variety of unsupervised and simple supervised models. 
+
+Media bias was categorized as `[left, left-center, center, right-center, right]`
+
+These models were all trained using Bag of Words.
+
+Being perfectly honest, the unsupervised models were quite horrible in the cases of Kmeans, MeanShift, and AffinityPropagation. I couldn't even get SpectralClustering to work.
+
+Although, a very basic logistic regression model trained on the same data proved to be quite accurate at classifying media biases, achieving a Test-set accuracy of ~85%.
+
+However since the unsupervised approach was so bad, I decided to pivot and try a different dataset. Bias is, after all, only one piece of the puzzle.
+
 
 ### Pivot - Modeling stage 2
 
