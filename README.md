@@ -32,6 +32,9 @@ Linux/Mac instructions are as follows:
 5. `pip install -r requirements.txt`
 6. Decompress the classifier so that the .pkl file is in the same folder as everything else. `tar -xf final-classifier-2.tar.xz`
 
+
+### Apache Notes
+
 sudo gedit /etc/apache2/ports.conf
  and change listened to 81
 
