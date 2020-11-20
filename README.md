@@ -31,6 +31,14 @@ Linux/Mac instructions are as follows:
 4. `source .venv/bin/activate`
 5. `pip install -r requirements.txt`
 6. Decompress the classifier so that the .pkl file is in the same folder as everything else. `tar -xf final-classifier-2.tar.xz`
+7. `export FLASK_app=app.py`
+8. `export FLASK_ENV=development`
+9. `flask run`
+10. Wait a few minutes for the model to load. It will print "Loading machine learning model." in the console.
+
+
+### Chrome Extension
+
 
 
 ### Apache Notes
@@ -56,5 +64,6 @@ Linux/Mac instructions are as follows:
 ```
 
 `sudo iptables -I INPUT -p tcp -m tcp --dport 81 -j ACCEPT`
+
 `sudo netstat -tnlp | grep :81`
 

@@ -1,3 +1,5 @@
 *.pkl
 .vscode/*
 final-classifier.tar.xz
+__pycache__/*
+.venv/*

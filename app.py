@@ -6,12 +6,10 @@ import torch
 
 app = Flask(__name__)
 cors = CORS(app)
+print("Loading machine learning model.")
 learner = load_learner("final-classifier-2.pkl", cpu=True)
 #learner = load_learner("/var/www/mscbackend/final-classifier-2.pkl", cpu=False)
-
-@app.route('/')
-def hello_world():
-    return "Hello World"
+print("Model loaded.")
 
 
 @app.route('/predict', methods=['POST'])
