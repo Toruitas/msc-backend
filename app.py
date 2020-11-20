@@ -7,10 +7,12 @@ import torch
 app = Flask(__name__)
 cors = CORS(app)
 learner = load_learner("final-classifier-2.pkl", cpu=True)
+#learner = load_learner("/var/www/mscbackend/final-classifier-2.pkl", cpu=False)
 
 @app.route('/')
 def hello_world():
     return "Hello World"
+
 
 @app.route('/predict', methods=['POST'])
 def predict_controversy():
@@ -26,8 +28,11 @@ def bulk_predict_controversy():
     return_body = {title:learner.predict(title)[0] for title in json_body}
     # prediction = learner.predict(json_body)
     # print(return_body)
+	#response = jsonify(return_body)
+	 #response.headers.add("Access-Control-Allow-Origin","*")
     return jsonify(return_body)  #prediction[0]
-  
-if __name__ == '__main__':
-    
-    app.run(port=8000, debug=True)
+
+
+@app.route('/')
+def hello_world():
+    return 'Hello, World!'

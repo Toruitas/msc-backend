@@ -11,6 +11,7 @@ Supervisor: Mick Grierson
 * Installation Instructions
 * Introduction
 * Project Journal
+* Apache notes
 
 
 ## Companion Repositories
@@ -30,3 +31,25 @@ Linux/Mac instructions are as follows:
 4. `source .venv/bin/activate`
 5. `pip install -r requirements.txt`
 6. Decompress the classifier so that the .pkl file is in the same folder as everything else. `tar -xf final-classifier-2.tar.xz`
+
+sudo gedit /etc/apache2/ports.conf
+ and change listened to 81
+
+sudo gedit mscbackend.conf
+
+
+<VirtualHost *:81>
+        ServerName mscjetson
+	WSGIDaemonProcess mscbackend user=jettoruitas group=jettoruitas threads=5
+	WSGIScriptAlias / /var/www/mscbackend/app.wsgi
+	<Directory /var/www/mscbackend>
+		WSGIProcessGroup mscbackend
+		WSGIApplicationGroup %{GLOBAL}
+		Require all granted
+	</Directory>
+	ErrorLog /var/www/mscbackend/logs/error.log
+</VirtualHost>
+
+sudo iptables -I INPUT -p tcp -m tcp --dport 81 -j ACCEPT
+sudo netstat -tnlp | grep :81
+
