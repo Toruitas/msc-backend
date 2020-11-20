@@ -40,17 +40,17 @@ Linux/Mac instructions are as follows:
 0. If you're in mscbackend, `cd ..`
 1. `https://github.com/Toruitas/msc-extension mscext`
 2. `cd mscext`
-3. Open Chrome and in the URL bar, navigate to chrome://extensions/
+3. Open Chrome and in the URL bar, navigate to `chrome://extensions/`
 4. In the upper-right corner, enable Developer Mode.
 ![Dev mode toggle](./Developermode.png)
-5. On the new navigation bar that enabling Developer Mode has revealed, click Load unpacked.
+5. On the new navigation bar that enabling Developer Mode has revealed, click "Load unpacked."
 6. Find and select the folder `mscext`
 7. That's installation complete.
 
 ### After installation completes
-1. In Chrome, go to (old.reddit.com/r/news)[old.reddit.com/r/news]
+1. In Chrome, go to [old.reddit.com/r/news](old.reddit.com/r/news)
 2. Wait for a while for the titles to be sent to the Flask server for predictions.
-3. See the titles change! Beware these!
+3. See the titles change! Beware entering the comments section! It might just make you feel worse about humanity.
 
 
 ### Apache Notes
