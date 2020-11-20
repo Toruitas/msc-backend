@@ -66,17 +66,64 @@ What about us? We, the people who are flooded by divisive language. What can we 
 
 Let's just avoid the bad, divisive, controversial news.
 
-This project is an effort to do that, starting by using Machine Learning to identify which submissions on reddit.com/r/news are bad, divisive, and controversial. It's not perfect, but if we can be nudged in a way to read fewer stressful news articles, we'll be better off. 
+This project is an effort to do that, starting by using Machine Learning to identify which submissions on reddit.com/r/news are bad, divisive, and controversial. It's not perfect, but if we can be nudged in a way to read fewer stressful news articles about how bad this or that group is, we'll be better off. 
 
 ## Project Journal
 
 ### Research stage
 
+The original intent of the project was to identify toxically divisive language in the media, and make it clear to the reader that it was potentially written to persuade them that a certain group or idea was bad. It is not a subject that has a lot of direct research, although there is significant research on a similar field: Fake News identification. Perhaps the focus on fake news is due to a bit of secret guilt, as who is it that creates the software that write fake news? We programmers.
+
+In order to achieve this, I estimated these approaches would be necessary:
+
+* Named entity recognition
+* Topic modeling
+* Positions of individuals or entities in the subject text with regards to topics
+* Positive vs negative language re: individuals, groups, topics
+* Identification of authors/publications who share common positions on divisive subjects
+* Identify techniques of manipulation and persuasion
+* Both sentence and article-level classification of the above
+* Maximal usage of unsupervised learning, to prevent continuous hand-labeling of an entire corpus of data at sentence and article levels
+
+Named entity recognition is essential to identify the target individuals and groups in a piece of text. The model would have to be able to identify new individuals and groups with new names without being explicitly told, since new characters are introduced nigh daily in this great play of life.
+
+To begin to classify something as divisive, it's important to establish the topic about which the divisions lie. For this, topic modeling is an obvious tool to attempt to use. 
+
+With topics and entities established, the model would then have to draw linkages between topics and individuals to determine their positions. At a minimum, this would involve sentiment analysis of these individuals, groups, and topics. At a deeper level, some relationship graphing would be useful.
+
+It's also important not to neglect the author. Frequently, the author's opinion bleeds into the content, and negative sentiment about an individual/group/topic will be biased. Not only would the author be biased in this particular article, but also their whole writing history, and further the author's publication(s). Ideally, the author and publications would be included in the group arithmetic. Again, this would be boosted significantly by deeper datamining to build a relationship graph. With this, perhaps some "fair and balanced" news sources could be outed as nothing more than propaganda channels coordinating with each other to brainwash.
+
+There are techniques regularly used in persuasive writing and speaking. By combining identification of these techniques with sentiment analysis and named entity recognition, it would be possible to see when the author is trying to convince the reader (e.g.) someone is bad, versus merely stating facts that the person did bad things.
+
+All of these would have to be done at the sentence-part, sentence, and complete article-levels. Some, even beyond, when a relationship graph or author/publication history come into play.
+
+Finally, this would have to utilize unsupervised methods as much as possible to be robust to new information coming in.
+
+
+
 ### Modeling stage
+
+Bias modeling 
+Unsupervised
+Supervised
+
+### Pivot - Modeling stage 2
+
+Reddit. Title. Controversial. Supervised.
 
 ### Application stage
 
+Chrome Plugin.
+Backend Flask server.
+
 ### Deployment stage
+Server requirements.
+Raspberry Pi.
+Jetson Nano.
+Stymied and alternatives.
+
+### Future work
+Maybe PhD.
 
 ## Apache Notes
 
