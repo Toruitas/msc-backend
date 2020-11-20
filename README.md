@@ -35,12 +35,13 @@ Linux/Mac instructions are as follows:
 
 ### Apache Notes
 
-sudo gedit /etc/apache2/ports.conf
- and change listened to 81
+`sudo gedit /etc/apache2/ports.conf`
+ and change `listened` to 81
 
-sudo gedit mscbackend.conf
+`sudo gedit mscbackend.conf`
 
 
+`
 <VirtualHost *:81>
         ServerName mscjetson
 	WSGIDaemonProcess mscbackend user=jettoruitas group=jettoruitas threads=5
@@ -52,7 +53,8 @@ sudo gedit mscbackend.conf
 	</Directory>
 	ErrorLog /var/www/mscbackend/logs/error.log
 </VirtualHost>
+`
 
-sudo iptables -I INPUT -p tcp -m tcp --dport 81 -j ACCEPT
-sudo netstat -tnlp | grep :81
+`sudo iptables -I INPUT -p tcp -m tcp --dport 81 -j ACCEPT`
+`sudo netstat -tnlp | grep :81`
 
