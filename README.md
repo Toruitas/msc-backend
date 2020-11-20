@@ -43,25 +43,15 @@ Linux/Mac instructions are as follows:
 
 ```
 <VirtualHost *:81>
-
     ServerName mscjetson
-
 	WSGIDaemonProcess mscbackend user=jettoruitas group=jettoruitas threads=5
-
 	WSGIScriptAlias / /var/www/mscbackend/app.wsgi
-
 	<Directory /var/www/mscbackend>
-
 		WSGIProcessGroup mscbackend
-
 		WSGIApplicationGroup %{GLOBAL}
-
 		Require all granted
-
 	</Directory>
-    
 	ErrorLog /var/www/mscbackend/logs/error.log
-
 </VirtualHost>
 ```
 
