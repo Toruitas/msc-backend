@@ -55,6 +55,15 @@ Linux/Mac instructions are as follows:
 2. Wait for a while for the titles to be sent to the Flask server for predictions.
 3. See the titles change! Beware entering the comments section! It might just make you feel worse about humanity.
 
+It works like this:
+
+<p align="center">
+    vvvvv CLICK ME vvvvv <br>
+    <a href="https://youtu.be/jYRutUkP-9Y" target="_blank">
+    <img src="http://i3.ytimg.com/vi/jYRutUkP-9Y/hqdefault.jpg" />
+  </a>
+</p>
+
 ## Introduction
 
 It's clear now. The increasingly entrenched socio-political tribal divisions across Western countires pose the most serious threat to... well it wouldn't be too far fetched to say the continued existence of some nations. During the 2020 US Presidential elections, a common question about the result was "Could there be another civil war?" As an American, that doesn't seem like a question you ask a society with broadly accepted values and opinions. No, that's a question asked only when division are so deep they seem impossible to bridge. The tribal divisions are preventing work on the true problems of global warming, income inequality, illness, etc. If every issue becomes subsumed into a divisive identity, then there's no chance.
