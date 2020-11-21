@@ -228,6 +228,8 @@ Then wait a while, as it's slow on CPU.
 
 ![preds](preds.png)
 
+The original version of the plugin didn't have the extra text (maybe controversial) added to the titles, so it simple changed colors. One of the users testing suggested that as a UX improvement.
+
 ### Future work
 This has only been an initial foray. I would still like to achieve my original ambition of identifying persuasively divisive content, and nudge people in a way to save anguish. In this way society can be less divided and tribal, and come together to solve the true problems in the world. 
 
