@@ -217,6 +217,10 @@ In the end, I ran the server succesfully locally and began to configure Apache. 
 But there was one last unsurmountable hurdle: Hyperoptic, my ISP, doesn't assign static IPs unless customers pay an extra fee. Without a static IP, port forwarding is disabled, and no data could get to the server. Which meant that at the 11th hour, I wouldn't be able to publically release the plugin. Alas.
 
 ### Usage Testing stage
+Usage is simple:
+Start: 
+![start](start.png)
+![preds](preds.png)
 Self-installation by volunteers
 
 ### Future work
