@@ -57,7 +57,7 @@ Linux/Mac instructions are as follows:
 
 ## Introduction
 
-It's clear now. The increasingly entrenched socio-political tribal divisions across Western countires pose the most serious threat to... well it wouldn't be too far fetched to say the continued existence of some nations. During the 2020 US Presidential elections, a common question about the result was "Could there be another civil war?" As an American, that doesn't seem like a question you ask a society with broadly accepted values and opinions. No, that's a question asked only when division are so deep they seem impossible to bridge. 
+It's clear now. The increasingly entrenched socio-political tribal divisions across Western countires pose the most serious threat to... well it wouldn't be too far fetched to say the continued existence of some nations. During the 2020 US Presidential elections, a common question about the result was "Could there be another civil war?" As an American, that doesn't seem like a question you ask a society with broadly accepted values and opinions. No, that's a question asked only when division are so deep they seem impossible to bridge. The tribal divisions are preventing work on the true problems of global warming, income inequality, illness, etc. If every issue becomes subsumed into a divisive identity, then there's no chance.
 
 Humans have a biological attraction to bad news. Our monkey brains want to know where every threat is coming from. Remember the old saying "If it bleeds it leads?" First with 24/7 Cable TV and now with the internet, the bleeding has reached new heights. It's gone beyond blood into blood feuds. The news is (in some circles at least) less something to inform, and instead something to push an agenda. 1984 had it wrong. 2 minutes of hate doesn't begin to compare with the onslought of anger Fox News broadcasts daily.
 
@@ -179,29 +179,53 @@ The dataset exploration sought to determine predictable relationships between ti
 4. Language model
 5. Classifier based on language model
 
-Of all these models, Random forests proved the best, although they overfit very badly. In one case, reaching 99% accuracy on the training set and 71% on validation.
+Of all these models, Random forests proved the best, although they overfit very badly. In one case, reaching 99% accuracy on the training set and 71.1% on validation.
 
 The language-model based classifier was just below that at 70.5%, and provided a more convenient deployment, at least when measured by lines of code, so I chose to use this model in deployment. As it turned out, it probably would have been smarter to just use the random forest model.
 
-### Application stage
+### Application stage (concurrent with Deployment stage)
 
-Chrome Plugin.
-Backend Flask server.
+With a trained model, all that's left is to create something people can use, and gain the benefits of a forewarning about controversial topics. With forewarning, they can avoid the mental and emotional strain.
 
-### Deployment stage
-Server requirements.
-Raspberry Pi.
-Jetson Nano.
-Stymied and alternatives.
+The most straightforward and easy to use approach seemed to be to create a Chrome plugin for Reddit users, which would get titles from the /r/news content they were currently viewing, send it to a backend serving the model for predictions, and then update the styling or add text to draw attention to any submissions which may be best avoided.
+
+During development of the backend and Chrome extension, I developed on a different machine than the NLP model was trained on, and different from that which the server was to be deployed on. This caused no small headache.
+
+Porting the trained model to another environment turned out to be quite difficult. As PyTorch (which FastAI is built on top of) uses the pickle module, it expects many of the same versions of packages to be installed. This took quite some time to pin down, mostly due to the breaking differences in how language models are handled between Spacy 2.3.1 and 2.3.2. I had to re-train the model, actually, with matching versions.
+
+The Flask backend was about as simple as can be, with only the model de-pickling as any kind of issue. There are 2 endpoints, one for a single title, one for a batch of titles. Testing revealed that the single title prediction endpoint broke the server and frontend, so the Chrome extension utilizes the batch prediction endpoint.
+
+The Chrome extension is relatively simple. First, it makes sure a user is on old.reddit.com/r/news. The new version of Reddit is much more complicated, and uses AJAX to GET batches of submissions as the user scrolls. It's an infinite scroll. Old reddit on the other hand uses conventional pagination and loads the whole page at once, which is much nicer to work with then trying to select required HTML elements in one shot. The extension creates a list of titles, sends them to the backend. The backend scores and returns a json object where the title as submitted is the key, and the value is True or False. The plugin then finds each title again, and changes its appearance to warn users off.
+
+
+### Deployment stage (concurrent with Application stage)
+
+The trained model was large - 2GB. So it took an eternity to load. This means that the server hosting the model has to load the model once and keep it loaded without going idle. Due to this no-idle requirement, it precluded many cloud hosting services, such as Heroku. That's before considering the potential need for a GPU. 
+
+Since running a trained model isn't as computationally intensive as training, I thought I could run this on the CPU. My first thought was to use the CCI-issued RaspberryPi. Its installation had somehow become corrupted in the months since my one and only classroom use of it, which took ample time to resolve. In the end, I couldn't even install the necessary Python packages to host the server. They simply weren't available.
+
+On the same machine, in the same environment as the model was originally trained on, I performed some basic speed testing to see if the model performed better when loaded to CPU or GPU. Naturally it was better on GPU. For a single prediction, CPU wall time was 112ms (AMD Ryzen 7 2700X) vs 32.6ms on the GPU (RTX 2070 8GB).
+
+With this in mind I sought to run the server on my Jetson Nano, as it has a GPU (and has a worse CPU than the Pi anyways, so the differences would likely be even more extreme than the desktop time). 
+
+Installing the required packages on the Jetson Nano frequently required building from source for packages, and for dependencies of those packages. I even had to downgrade software on the machine. Took days to compile, make, and install, as the CPU is quite underpowered. 
+
+Once the server dependencies were installed however, testing revealed that the model takes about 10 minutes to load and about 99% of the 4GB RAM available. Chug. I had expected it to take a long time, as it did on my development machines, but that's beyond expectations. It only reinforced the correctness of the decision to host it on my own device.
+
+In the end, I ran the server succesfully locally and began to configure Apache. This worked fine locally. The Jetson could serve the model on its local static IP, and a Chrome browser on a different device on the network could send titles and receive predictions. Great!
+
+But there was one last unsurmountable hurdle: Hyperoptic, my ISP, doesn't assign static IPs unless customers pay an extra fee. Without a static IP, port forwarding is disabled, and no data could get to the server. Which meant that at the 11th hour, I wouldn't be able to publically release the plugin. Alas.
 
 ### Usage Testing stage
-Self-installed volunteers
+Self-installation by volunteers
 
 ### Future work
-Maybe PhD.
+This has only been an initial foray. I would still like to achieve my original ambition of identifying persuasively divisive content, and nudge people in a way to save anguish. In this way society can be less divided and tribal, and come together to solve the true problems in the world. 
+
+As such, I think (and Mick would agree), there is enough work here for a PhD. Given the chance, I'll continue the work and we as a society can get on with things that matter.
 
 ### Thanks
-CCI, Mick, Tom, Anna, and Josh, and finally my Dad and Susan.
+Special thanks goes out to UAL's Creative Computing Institute, my supervisor Mick Grierson, my instructors (Sheldon Brown, Phoenix Perry, Mick Grierson, Vitek Ruzicka, Rebecca Fiebrink), CCI staff (Tom Lynch, Ben Kelly, Ben Stopher, Matt Jarvis, Benelia Salmon, and everyone else), my classmates (especially Josh and Anna), and perhaps most importantly David Leitch and Susan S., without whom I wouldn't have had the hardware to complete the project!
 
 ## Apache Notes
 
