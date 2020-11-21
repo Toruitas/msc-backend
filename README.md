@@ -218,10 +218,15 @@ But there was one last unsurmountable hurdle: Hyperoptic, my ISP, doesn't assign
 
 ### Usage Testing stage
 Usage is simple:
+
 Start: 
 ![start](start.png)
+
+Then wait a while, as it's slow on CPU.
+
+ Eventually, you'll see:
+
 ![preds](preds.png)
-Self-installation by volunteers
 
 ### Future work
 This has only been an initial foray. I would still like to achieve my original ambition of identifying persuasively divisive content, and nudge people in a way to save anguish. In this way society can be less divided and tribal, and come together to solve the true problems in the world. 
