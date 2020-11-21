@@ -57,12 +57,7 @@ Linux/Mac instructions are as follows:
 
 It works like this:
 
-<p align="center">
-    vvvvv CLICK ME vvvvv <br>
-    <a href="https://youtu.be/jYRutUkP-9Y" target="_blank">
-    <img src="http://i3.ytimg.com/vi/jYRutUkP-9Y/hqdefault.jpg" />
-  </a>
-</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/jYRutUkP-9Y" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> 
 
 ## Introduction
 
