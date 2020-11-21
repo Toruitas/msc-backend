@@ -13,6 +13,7 @@ Date: November 27th, 2020
 * Installation Instructions
 * Introduction
 * Project Journal
+* Thanks
 * Apache notes
 * Useful links
 
@@ -81,7 +82,7 @@ In order to achieve this, I estimated these approaches would be necessary:
 * Positions of individuals or entities in the subject text with regards to topics
 * Positive vs negative language re: individuals, groups, topics
 * Identification of authors/publications who share common positions on divisive subjects
-* Identify techniques of manipulation and persuasion
+* Identify techniques of manipulation and persuasion (including narrative structures)
 * Both sentence and article-level classification of the above
 * Maximal usage of unsupervised learning, to prevent continuous hand-labeling of an entire corpus of data at sentence and article levels
 
@@ -106,22 +107,81 @@ I chose a single paper which to model my efforts after: [Fake News Early Detecti
 
 ### Modeling stage
 
-My first efforts at training a machine learning model were focused on classifying bias. Using a couple datasets of news articles from Kaggle [here](https://www.kaggle.com/snapcrack/all-the-news) and [here](https://components.one/datasets/all-the-news-2-news-articles-dataset/), I customized the dataset by including publisher bias scores from https://mediabiasfactcheck.com/. Then I trained the model on a variety of unsupervised and simple supervised models. 
+My first efforts at training a machine learning model were focused on classifying bias. Using a couple datasets of news articles from Kaggle [here](https://www.kaggle.com/snapcrack/all-the-news) and [here](https://components.one/datasets/all-the-news-2-news-articles-dataset/), I customized the dataset by including publisher media bias scores from https://mediabiasfactcheck.com/. The combined dataset had 2.1m articles reaching 8GB, which I pruned down to achieve better parity between the various publisher media bias scores. The original dataset had more left/left-center sources and required pruning to achieve better balance. The dataset was still very substantial, at 6GB.
 
-Media bias was categorized as `[left, left-center, center, right-center, right]`
+Once prepared, I trained a variety of unsupervised and simple supervised models. 
+
+Media bias was categorized as `[left, left-center, center, right-center, right]`, but the dataset doesn't include far-left or far-right, though a better version would include those categories.
 
 These models were all trained using Bag of Words.
 
-Being perfectly honest, the unsupervised models were quite horrible in the cases of Kmeans, MeanShift, and AffinityPropagation. I couldn't even get SpectralClustering to work.
+Being perfectly honest, the unsupervised models were quite horrible in the cases of K-means, Mean Shift, and Affinity Propagation. I couldn't even get Spectral Clustering to work.
 
 Although, a very basic logistic regression model trained on the same data proved to be quite accurate at classifying media biases, achieving a Test-set accuracy of ~85%.
 
-However since the unsupervised approach was so bad, I decided to pivot and try a different dataset. Bias is, after all, only one piece of the puzzle.
+However, since the unsupervised approach was so bad, I decided to pivot and try a different dataset. Bias is, after all, only one piece of the puzzle. It had just seemed like low-hanging fruit as I was able to easily get labels for media bias.
 
 
 ### Pivot - Modeling stage 2
 
-Reddit. Title. Controversial. Supervised.
+After discussion with my supervisor, Mick Grierson, rather than attempt to build my own dataset through hand labeling article content, I would start with titles of Reddit submissions on the /r/news subreddit. Conveniently, Reddit has its own measure of "controversial," which is as close to a measure of division as is readily available. If possible, I would extend to the underlying articles. But let's be honest, here. Redditors never read the farking article anyway. 
+
+Using Reddit's [PRAW](https://praw.readthedocs.io/en/latest/) Python package and [Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/), I scraped the /r/news subreddit. 
+
+This resulted in the collection of the following data categories:
+* top - all
+* top - day
+* top - hour
+* top - month
+* top - today
+* top - week
+* top - year
+* controversial - all
+* controversial - day
+* controversial - hour
+* controversial - month
+* controversial - today
+* controversial - week
+* controversial - year
+
+Which, when consolidated, created a single dataset of more than 6000 submissions after removing duplicates, which is a decent sized dataset. 
+
+Exploring the dataset didn't reveal a cut and dry measure of how Reddit determines what goes in /r/news/controversial, unfortunately. No reverse engineering possible. The common understanding that it is a ratio of up to down votes is incorrect, although the ratio clearly has influence on the measure. This is a major weakness in my work, since not only do I not have a decisive definition of what is divisive, and I rely on a black box on an uncontrolled platform (Reddit) to determine controverisial labels in the dataset. It was a bit easier to see what made it to /r/news/top as there's a distinct minimum cutoff in votes to make it.
+
+The dataset did end up being quite balanced, with 3.6k controversial labels and 3k uncontroversial. Unfortunately, at 2GB+, it's too large to upload to GitHub.
+
+The dataset exploration sought to determine predictable relationships between titles and controversiality on Reddit. It covered:
+* Title length (There's indeed a relationship, with shorter article titles being more controversial in general)
+* Link source (Discarding low-frequency sources, some publications are incredibly controversial, and others less so)
+* ALL CAPS (only 3 submissions were. All controversial, but hard to draw conclusions from so few)
+* Source title doesn't match submission title (When titles match, 55.595581171950045% are controversial. When titles do NOT match, 51.66959578207382% are controversial. Not a big difference)
+* Sentiment (When titles have negative sentiment, 52.96% are controversial. When titles are positive, 60.02% are controversial. A fair difference, but interesting that POSITIVE is more controversial. This was very imbalanced, with 4.5k negative and the remaining <2k positive)
+* Bag of Words
+1. K-means clustering 
+2. Mean shift clustering
+3. Affinity Propagation clustering (failed with errors)
+4. Spectral Clustering 
+5. Logistic regression
+6. Random Forest classifier
+7. Gradient boosting classifier
+* TFIDF vectorization
+1. K-means clustering 
+2. Mean shift clustering
+3. Affinity Propagation clustering (failed with errors again - just can't get it to work)
+4. Spectral Clustering 
+5. Logistic regression
+6. Random Forest classifier
+7. Gradient boosting classifier
+* Fastai
+1. Tabular neural net approach using the TFIDF vectorization data above
+2. Decision trees
+3. Random forest
+4. Language model
+5. Classifier based on language model
+
+Of all these models, Random forests proved the best, although they overfit very badly. In one case, reaching 99% accuracy on the training set and 71% on validation.
+
+The language-model based classifier was just below that at 70.5%, and provided a more convenient deployment, at least when measured by lines of code, so I chose to use this model in deployment. As it turned out, it probably would have been smarter to just use the random forest model.
 
 ### Application stage
 
@@ -134,8 +194,14 @@ Raspberry Pi.
 Jetson Nano.
 Stymied and alternatives.
 
+### Usage Testing stage
+Self-installed volunteers
+
 ### Future work
 Maybe PhD.
+
+### Thanks
+CCI, Mick, Tom, Anna, and Josh, and finally my Dad and Susan.
 
 ## Apache Notes
 
@@ -249,3 +315,4 @@ In roughly chronological order.
 * [[R] Hyperparameter Tuning for Transformer Models](https://www.reddit.com/r/MachineLearning/comments/ihb2gn/r_hyperparameter_tuning_for_transformer_models/)
 * [Effective Machine Learning Approach to Detect Groups of Fake Reviewers](https://csce.ucmss.com/cr/books/2018/LFS/CSREA2018/ICD8036.pdf)
 * [Fastai](https://course.fast.ai/)
+* [The Denialist Playbook](https://www.scientificamerican.com/article/the-denialist-playbook/?utm_source=pocket-newtab-global-en-GB)
