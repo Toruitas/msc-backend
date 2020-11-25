@@ -57,7 +57,12 @@ Linux/Mac instructions are as follows:
 
 It works like this:
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/jYRutUkP-9Y" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> 
+<p align="center">
+    vvvvv CLICK ME vvvvv <br>
+    <a href="https://youtu.be/jYRutUkP-9Y" target="_blank">
+    <img src="http://i3.ytimg.com/vi/jYRutUkP-9Y/hqdefault.jpg" />
+  </a>
+</p>
 
 ## Introduction
 
@@ -347,11 +352,11 @@ In roughly chronological order.
 * [New Machine Learning Algorithms Reduce Bias in Identifying Groups](https://www.cc.gatech.edu/news/622219/new-machine-learning-algorithms-reduce-bias-identifying-groups)
 * [Sentiment Identification in Code-Mixed Social MediaText](https://arxiv.org/pdf/1707.01184.pdf)
 * [Python Named Entity Recognition - Machine Learning Project Series: Part 1](https://programmerbackpack.com/machine-learning-project-series-building-a-personal-knowledge-management-system-part-1-named-entity-recognition/)
-* [Predicting Authors- Unsupervised NLP, LSA and BOW](https://www.kaggle.com/miguelniblock/predict-the-author-unsupervised-nlp-lsa-and-bow)
+* [Predicting Authors- Unsupervised NLP, LSA and BOW](https://www.kaggle.com/miguelniblock/predict-the-author-unsupervised-nlp-lsa-and-bow)  <- Significant code borrowed from this notebook.
 * [Twitter US Airline Sentiment](https://www.kaggle.com/crowdflower/twitter-airline-sentiment)
 * [Unsupervised-Text-Clustering using Natural Language Processing(NLP)](https://medium.com/@rohithramesh1991/unsupervised-text-clustering-using-natural-language-processing-nlp-1a8bc18b048d)
 * [Unsupervised-Text-Clustering](https://github.com/rohithramesh1991/Unsupervised-Text-Clustering)
 * [[R] Hyperparameter Tuning for Transformer Models](https://www.reddit.com/r/MachineLearning/comments/ihb2gn/r_hyperparameter_tuning_for_transformer_models/)
 * [Effective Machine Learning Approach to Detect Groups of Fake Reviewers](https://csce.ucmss.com/cr/books/2018/LFS/CSREA2018/ICD8036.pdf)
-* [Fastai](https://course.fast.ai/)
+* [Fastai](https://course.fast.ai/) <- Significant code borrowed from this website
 * [The Denialist Playbook](https://www.scientificamerican.com/article/the-denialist-playbook/?utm_source=pocket-newtab-global-en-GB)
